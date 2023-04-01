@@ -3,4 +3,97 @@
     padding: 0;
     text-decoration: none;
     border: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    gap: 20px;
+}
+
+a{
+    color: #FFFDFA;
+}
+
+a:hover{
+    color: #ca37a6;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: #FFFFFF 0px 0px 10px;
+    border: 3px white solid;
+    gap: 3px;
+    padding: 3px;
+}
+
+.calculator-screen {
+    background-color: #2929298f;
+    height: 100px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.calculator-buttons-container{
+    display: flex;
+    overflow: hidden;
+    gap: 3px;
+}
+
+.calculator-buttons{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFDFA;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 80%;
+    border-radius: 2px;
+}
+
+.calculator-buttons:active{
+    background-color: #d8d8d8;
+}
+
+.screen-text{
+    color: #FFFDFA;
+    padding-right: 25px;
+}
+
+#text-top {
+    font-size: 25px;
+    padding-right: 30px;
+}
+
+#text-bottom {
+    font-size: 40px;
+    padding-bottom: 5px;
+}
+
+footer {
+    color: #FFFDFA;
+}
+
+#button-clear{
+    width: 203px;
+}
+
+#button-equal{
+    width: 203px;
 }
