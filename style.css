@@ -108,7 +108,11 @@ footer {
         height: 75px;
         width: 75px;
     }
-
+    
+    .calculator-screen {
+    max-width: 309px;
+    }
+    
     #button-clear{
         width: 153px;
     }
