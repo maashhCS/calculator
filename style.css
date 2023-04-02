@@ -45,7 +45,7 @@ a:hover{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    gap: 8px;
+    gap: 4px;
 }
 
 .calculator-buttons-container{
