@@ -20,10 +20,14 @@ buttons.forEach(button => {
         if(e.target.matches('#button-divide')){
             if(currentNumArr.length === 0){
                 return;
-            } else {
+            } else if(currentNumArr[0] === "-"){
+                return;
+            } else if(currentNum !== "" && previousNum !== ""){
+                equal();
+            } else{
                 operation = '÷';
                 previousNum = currentNum;
-                updateTopScreen()
+                updateTopScreen();
             }
         };
 
@@ -45,7 +49,11 @@ buttons.forEach(button => {
         if(e.target.matches('#button-multiply')){
             if(currentNumArr.length === 0){
                 return;
-            } else {
+            } else if(currentNumArr[0] === "-"){
+                return;
+            } else if(currentNum !== "" && previousNum !== ""){
+                equal();
+            } else{
                 operation = '*';
                 previousNum = currentNum;
                 updateTopScreen();
@@ -70,7 +78,11 @@ buttons.forEach(button => {
         if(e.target.matches('#button-plus')){
             if(currentNumArr.length === 0){
                 return;
-            } else {
+            } else if(currentNumArr[0] === "-"){
+                return;
+            } else if(currentNum !== "" && previousNum !== ""){
+                equal();
+            } else{
                 operation = '+';
                 previousNum = currentNum;
                 updateTopScreen();
@@ -96,13 +108,15 @@ buttons.forEach(button => {
             if(currentNumArr.length === 0){
                 currentNumArr.push('-');
                 updateScreen();
-            }else if (currentNum !== ""){
+            } else if(currentNum !== "" && previousNum !== ""){
+                equal();
+            } else if(currentNum !== ""){
                 operation = '-';
                 previousNum = currentNum;
                 updateTopScreen()
-            }else if (typeof parseFloat(currentNumArr[1]) === 'number'){
+            } else if(typeof parseFloat(currentNumArr[1]) === 'number'){
                 return;
-            }else {
+            } else{
                 operation = '-';
                 previousNum = currentNum;
                 updateTopScreen()
@@ -110,8 +124,12 @@ buttons.forEach(button => {
         };
 
         if(e.target.matches('#button-comma')){
-            currentNumArr.push('.');
-            updateScreen();
+            if(currentNumArr.indexOf('.') === -1){
+                currentNumArr.push('.');
+                updateScreen();
+            } else{
+                return;
+            }
         };
 
         if(e.target.matches('#button-number0')){
@@ -138,7 +156,11 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2){
-    result = round(num1 / num2, 10);
+    if(num2 === 0){
+        result = 80085;
+    } else{
+        result = round(num1 / num2, 10);
+    }
 }
 
 function updateTopScreen(){
@@ -189,6 +211,8 @@ function equal(){
         divide(previousNum, currentNum);
     }
     currentNum = result;
+    currentNumArr.splice(0, currentNumArr.length);
+    currentNumArr.push(result);
     previousNum = "";
     updateResultScreen();
 }
