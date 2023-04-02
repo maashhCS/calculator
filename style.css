@@ -39,6 +39,7 @@ a:hover{
 
 .calculator-screen {
     background-color: #2929298f;
+    max-width: 409px;
     height: 100px;
     border-radius: 4px;
     display: flex;
@@ -46,6 +47,7 @@ a:hover{
     justify-content: flex-end;
     align-items: flex-end;
     gap: 4px;
+    overflow: hidden;
 }
 
 .calculator-buttons-container{
@@ -65,6 +67,8 @@ a:hover{
     font-weight: 600;
     opacity: 80%;
     border-radius: 2px;
+    cursor: default;
+    user-select: none;
 }
 
 .calculator-buttons:active{
@@ -73,7 +77,7 @@ a:hover{
 
 .screen-text{
     color: #FFFDFA;
-    padding-right: 25px;
+    padding-right: 20px;
 }
 
 #text-top {
@@ -97,4 +101,19 @@ footer {
 
 #button-equal{
     width: 203px;
+}
+
+@media (max-width: 500px){
+    .calculator-buttons{
+        height: 75px;
+        width: 75px;
+    }
+
+    #button-clear{
+        width: 153px;
+    }
+    
+    #button-equal{
+        width: 153px;
+    }
 }
