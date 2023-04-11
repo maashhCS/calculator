@@ -4,23 +4,23 @@ let previousNum = "";
 let currentNum = "";
 const currentNumArr = [];
 let operation = "";
-
+let minusPressed = false;
 
 const buttons = document.querySelectorAll('.calculator-buttons');
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
         if(e.target.matches('#button-clear')){
             clear();
-        };
+        }
         
         if (e.target.matches('#button-delete')){
             deleteCurrentNum();
-        };
+        }
 
         if(e.target.matches('#button-divide')){
             if(currentNumArr.length === 0){
                 return;
-            } else if(currentNumArr[0] === "-"){
+            } else if(currentNumArr[0] === "-" && minusPressed){
                 return;
             } else if(currentNum !== "" && previousNum !== ""){
                 equal();
@@ -29,27 +29,27 @@ buttons.forEach(button => {
                 previousNum = currentNum;
                 updateTopScreen();
             }
-        };
+        }
 
         if(e.target.matches('#button-number1')){
             currentNumArr.push('1');
             updateScreen();
-        };
+        }
 
         if(e.target.matches('#button-number2')){
             currentNumArr.push('2');
             updateScreen();
-        };
+        }
 
         if(e.target.matches('#button-number3')){
             currentNumArr.push('3');
             updateScreen();
-        };
+        }
 
         if(e.target.matches('#button-multiply')){
             if(currentNumArr.length === 0){
                 return;
-            } else if(currentNumArr[0] === "-"){
+            } else if(currentNumArr[0] === "-" && minusPressed){
                 return;
             } else if(currentNum !== "" && previousNum !== ""){
                 equal();
@@ -58,27 +58,29 @@ buttons.forEach(button => {
                 previousNum = currentNum;
                 updateTopScreen();
             }
-        };
+        }
 
         if(e.target.matches('#button-number4')){
             currentNumArr.push('4');
             updateScreen();
-        };
+        }
 
         if(e.target.matches('#button-number5')){
             currentNumArr.push('5');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-number6')){
             currentNumArr.push('6');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-plus')){
             if(currentNumArr.length === 0){
                 return;
-            } else if(currentNumArr[0] === "-"){
+            } else if(currentNumArr[0] === "-" && minusPressed){
                 return;
             } else if(currentNum !== "" && previousNum !== ""){
                 equal();
@@ -87,41 +89,48 @@ buttons.forEach(button => {
                 previousNum = currentNum;
                 updateTopScreen();
             }
-        };
+        }
 
         if(e.target.matches('#button-number7')){
             currentNumArr.push('7');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-number8')){
             currentNumArr.push('8');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-number9')){
             currentNumArr.push('9');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-minus')){
             if(currentNumArr.length === 0){
                 currentNumArr.push('-');
                 updateScreen();
-            } else if(currentNum !== "" && previousNum !== ""){
+                minusPressed = true;
+            } else if(minusPressed){
+                return;
+            } else if(currentNum !== '' && previousNum !== ''){
                 equal();
-            } else if(currentNum !== ""){
+                    minusPressed = false;
+            } else if(currentNum !== ''){
                 operation = '-';
                 previousNum = currentNum;
                 updateTopScreen()
-            } else if(typeof parseFloat(currentNumArr[1]) === 'number'){
-                return;
+                minusPressed = false;
             } else{
                 operation = '-';
                 previousNum = currentNum;
                 updateTopScreen()
+                minusPressed = false;
             }
-        };
+        }
 
         if(e.target.matches('#button-comma')){
             if(currentNumArr.indexOf('.') === -1){
@@ -130,18 +139,19 @@ buttons.forEach(button => {
             } else{
                 return;
             }
-        };
+        }
 
         if(e.target.matches('#button-number0')){
             currentNumArr.push('0');
             updateScreen();
-        };
+            minusPressed = false;
+        }
 
         if(e.target.matches('#button-equal')){
             equal();
-        };
-    });
-});
+        }
+    })
+})
 
 function plus(num1, num2){
     result = round(num1 + num2, 10);
