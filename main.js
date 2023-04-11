@@ -133,7 +133,7 @@ buttons.forEach(button => {
         }
 
         if(e.target.matches('#button-comma')){
-            if(currentNumArr.indexOf('.') === -1){
+            if(currentNumArr.indexOf('.') === -1 && result.indexOf('.') === -1){
                 currentNumArr.push('.');
                 updateScreen();
             } else{
